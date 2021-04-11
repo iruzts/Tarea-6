@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DashController;
+use App\Http\Controllers\Vista1Controller;
+use App\Http\Controllers\Vista2Controller;
+use App\Http\Controllers\Vista3Controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +20,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
-    return view('dash.index');
-})->name('dash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dash', [DashController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/vista1', [Vista1Controller::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/vista2', [Vista2Controller::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/vista3', [Vista3Controller::class, 'index']);
+
+
